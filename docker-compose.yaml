@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  server:
+    build: .
+    command: python view.py
+    env_file:
+      - .env
+    ports:
+    - "5000:5000"
+    volumes:
+      - .:/python-flask
+  web:
+    build: ./my-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./my-app:/user/src/app
+    depends_on:
+      - server
