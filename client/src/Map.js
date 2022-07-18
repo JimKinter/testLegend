@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
-import { Map, TileLayer } from "react-leaflet";
+import { Map, TileLayer, useMapEvents } from "react-leaflet";
 import Legend from "./Legend";
+import { CoordinatesControl } from "react-leaflet-coordinates"
 import HeatmapLayer from "react-leaflet-heatmap-layer"
 
 //This is just pure styling
@@ -16,6 +17,8 @@ function Header(){
 //the data received from the backend (remove the duds), before creating the map,
 //and plotting the data on the map 
 class MapLeaflet extends Component {
+    
+
   state ={
     data: []
   }
@@ -59,6 +62,7 @@ class MapLeaflet extends Component {
             longitudeExtractor={m => m[1]}
             latitudeExtractor={m => m[0]}
             intensityExtractor={m => parseFloat(m[2])}/>
+      <CoordinatesControl coordinates = "decimal" position="topleft"/>
     </Map>
     );
   }

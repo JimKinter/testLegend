@@ -24,7 +24,7 @@ class Legend extends MapControl {
         : "#FFEDA0";
     };
 
-    const legend = L.control({ position: "bottomright" });
+    const legend = L.control({ position: "topright" });
 
     legend.onAdd = () => {
       const div = L.DomUtil.create("div", "info legend");
